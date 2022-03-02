@@ -17,7 +17,7 @@ background for my grid.
 
 ![Screen Cap Small](/inc/img/ScnCapDemoAttorneyWebSite_small.png)
 
-[See it live and try it out](https://demolaw.markrobbinscoder.com)
+[See it live and try it out at my website](https://demolaw.markrobbinscoder.com target="_blank")
 
 ## Current Project Status
 
