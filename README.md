@@ -17,6 +17,8 @@ background for my grid.
 
 ![Screen Cap Small](/inc/img/ScnCapDemoAttorneyWebSite_small.png)
 
+[See it live and try it out](https://demolaw.markrobbinscoder.com)
+
 ## Current Project Status
 
 The basic design is solid.
