@@ -11,9 +11,6 @@ img {
     display: block;
     max-width: 100%;
 }
-/* h1,  h2, h3, h4, h5, h6, p, ul, ol {
-    margin: 0 0 1em 0;
-} */
 /*  custom properties
 ---------------------------------------------------------------------------- */
 :root {
@@ -37,16 +34,14 @@ img {
     --fs-h1: 2.1rem;
     --fs-h2: 1.8rem;
     --fs-h3: 1.35rem;
-    --fs-h4: 1.2rem;
     --fs-body: 0.9rem;
     --fs-footer: .8rem;
 }
 @media (min-width: 900px) {
-     :root {
+    :root {
         --fs-h1: 2.7rem;
         --fs-h2: 2.2rem;
         --fs-h3: 1.4rem;
-        --fs-h4: 1.1rem;
         --fs-body: 1rem;
     }
 }
@@ -93,8 +88,7 @@ p {
 }
 h1,
 h2,
-h3,
-h4 {
+h3 {
     font-family: var(--ff-header);
     font-weight: var(--fw-header);
     margin: 0 0.2em 1em 0.2em;
@@ -105,7 +99,6 @@ h1 {
     font-size: clamp(2rem, 5vw, 3rem);
     line-height: 1.1em;
     display: inline-block;
-    text-align: center;
 }
 h2 {
     /* font-size: var(--fs-h2); */
@@ -116,19 +109,16 @@ h3 {
 /*     font-size: var(--fs-h3); */
     font-size: clamp(1.2rem, 3vw, 1.4rem);
 }
-h4 {
-    font-size: var(--fs-h4);
-}
-
 /* link styling 
 ---------------------------------------------------------------------------- */
 a:link {
     font-family: var(--ff-primary);
 /*     font-weight: var(--fw-bold); */
+    font-size: clamp(0.8em, 1.5vw, 1.1em);
     text-decoration: none;
 /*     color: var(--clr-light); */
     color: var(--clr-dark);
-    padding: .1em .25em;
+    padding: .2em .5em;
     margin-bottom: .5em;
 }
 a:visited {
@@ -161,10 +151,6 @@ main.myWrapper  {
 }
 /* grid layout 
 ---------------------------------------------------------------------------- */
-section.container-grid {
-    max-width: 100%;
-    margin: 0 auto;
-}
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -190,13 +176,13 @@ div.background-wrapper-image {
     width: 100vw;
     object-fit: cover;
 }
-div.maintitle {
+h1.maintitle {
     grid-column: 1 / 13;
     grid-row: 1 / 2;
     align-self: center;
     padding-left: 0.5rem;
 }
-div.subtitle {
+h2.subtitle {
     grid-column: 1 / 13;
     grid-row: 2 / 3;
     align-self: center;
@@ -205,58 +191,83 @@ div.subtitle {
 div.text-block-left {
     grid-column: 1 / 13;
     grid-row: 3 / 5;
-    margin: 1rem 1rem 0 1rem;
+    background-color: rgba(255, 235, 211, 0.7);
+    padding: 1rem 1rem 0 1rem;
+    border: 1px solid black;
+    border-bottom: none;
+    border-radius: 0 1.5rem 0 0;
+    margin: 1rem 0.25rem 0 0.25rem;
 }
 div.text-block-right {
     grid-column: 1 / 13;
     grid-row: 5 / 7;
-    margin: 0 1rem 1rem 1rem;
+    background-color: rgba(255, 235, 211, 0.7);
+    padding: 0 1rem 1rem 1rem;
+    border: 1px solid black;
+    border-top: none;
+    border-radius: 0 0 0 1.5rem;
+    margin: -0.5rem 0.25rem 1rem 0.25rem;
 }
-div.menu {
+nav.menu {
     grid-column: 1 / 13;
     grid-row: 7 / 8;
-    background-color: rgb(3, 3, 3);
+    position: relative;
+    bottom: -7vh;
+    opacity: 0;
+    background-color: rgba(3, 3, 3, 0);
     color: #fff;
-    border-radius: 0;
+    transition: all 0.4s ease-in-out;
 }
-div.menu-trigger { 
+nav.menu.show-menu {
+    bottom: 0;
+    opacity: 1;
+    background-color: rgba(3, 3, 3, 1.0);
+}
+button.js-burger-toggle { 
     grid-column: 12 / 13;
     grid-row: 1 / 2;
     place-self: center;
-    padding-top: 1rem;
 }
 
-/*  burger
+/* burger button
+----------------------------------------------------------------------------- */
+button {
+    display: inline-block;
+    min-width: 45px;
+    height: 45px;
+    background-color: inherit;
+    border: none;
+}
+
+/* burger inside the button
 ------------------------------------ */
-.myHeaderburger {
-	display: unset;
-	cursor: pointer;	
+.burger {
+    pointer-events: none;
+    margin: 0 auto;
 }
-.myHeaderburger div {
-	width: 25px;
-	height: 3px;
-	background-color: var(--clr-light);
-	background-color: var(--clr-dark);
-	margin: 5px;
-	transition: all 0.3s ease;
+span.burger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: rgb(3, 3, 3);
+    margin: 5px auto;
+    transition: all 0.3s ease;
 }
-.toggle .line1 {
+/* end burger
+------------------------------------ */
+
+button[aria-expanded='true'] .line1 {
 	transform: rotate(-45deg) translate(-5px, 6px);
-	background-color: var(--clr-light);
-	background-color: var(--clr-dark);
 }
-.toggle .line2 {
+button[aria-expanded='true'] .line2 {
 	opacity: 0;
-	background-color: var(--clr-light);
-	background-color: var(--clr-dark);
 }
-.toggle .line3 {
+button[aria-expanded='true'] .line3 {
 	transform: rotate(45deg) translate(-5px, -6px);
-	background-color: var(--clr-light);
-	background-color: var(--clr-dark);
 }
-/*
------------------------------------ */
+
+/* end button
+----------------------------------------------------------------------------- */
 h1, h2 {
     margin: 0;
 }
@@ -287,16 +298,16 @@ div.text-block-right a:link:hover {
     border-radius: 1rem;
 }
 
-div.menu ul {
+.menu ul {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem .25rem;
     margin: 0;
 } 
 .menu ul li a {
     color: var(--clr-light);
-    margin: 0 1rem;
+    margin: 0 0.25rem;
 }
 .menu ul li a:hover {
     color: var(--clr-dark);
@@ -334,6 +345,12 @@ Extra (xl) large devices (large desktops, 1200px and up)
     div.text-block-right {
         max-width: 60ch;
     }
+    nav.menu {
+        max-width: 120ch;
+        grid-column: 1 / 12;
+        grid-row: 7 / 8;
+        border-radius: 0 1.5rem 0 0;
+    }
 } 
 
  @media (min-width: 768px) {
@@ -341,7 +358,7 @@ Extra (xl) large devices (large desktops, 1200px and up)
         max-width: 60ch;
         grid-column: 1 / 5;
         grid-row: 3 / 6;
-        background-color: hsl(34, 78%, 91%, .7);
+        background-color: rgba(255, 235, 211, 0.7);
         padding: 1rem;
         border: 1px solid black;
         border-right: none;
@@ -352,13 +369,19 @@ Extra (xl) large devices (large desktops, 1200px and up)
         max-width: 60ch;
         grid-column: 5 / 9;
         grid-row: 3 / 6;
-        background-color: hsl(34, 78%, 91%, .7);
+        background-color: rgba(255, 235, 211, 0.7);
         padding: 1rem;
         border: 1px solid black;
         border-left: none;
         border-radius: 0 1.5rem 0 0;
         margin: 0 0 0 -0.5rem;
    }
+    nav.menu {
+        max-width: 120ch;
+        grid-column: 1 / 11;
+        grid-row: 7 / 8;
+        border-radius: 0 1.5rem 0 0;
+    }
 } 
 
 /* @media (min-width: 992px) {
@@ -376,16 +399,6 @@ Extra (xl) large devices (large desktops, 1200px and up)
     div.text-block-right {
         grid-column: 3 / 4;
         grid-row: 3 / 12;
-    }
-    div.menu {
-        grid-column: 1 / 4;
-        grid-row: 12 / 13;
-        border-radius: 0 3rem 0 0;
-    }
-    div.menu-trigger { 
-        grid-column: 4 / 5;
-        grid-row: 1 / 2;
-        place-self: center;
     }
 } */
 

@@ -13,14 +13,16 @@ After trying numerous combinations of loading the image via HTML or CSS as an
 image or as a background, I decided to load the image in HTML and use it as a 
 background for my grid.  
 
+![Screen Cap Large](/inc/img/ScnCapDemoAttorneyWebSite_large.png)
+
+![Screen Cap Small](/inc/img/ScnCapDemoAttorneyWebSite_small.png)
+
 ## Current Project Status
 
 The basic design is solid.
 
-I need to refactor the hamburger menu to make it semantically correct. I found 
-out recently that I have been doing it wrong. :pensive:  
-
-I need to add the javascript to activate the hamburger menu.  
+I want to tweak the blue highlight under the names using calc so it always 
+has the same right offset.
 
 ## Tools
 
